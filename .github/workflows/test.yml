@@ -31,3 +31,9 @@ jobs:
       - name: Test coverage with Gradle
         run: >
           ./gradlew testCoverage
+
+      - name: JaCoCo Report
+        uses: Madrapps/jacoco-report@v1.2
+        with:
+          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
