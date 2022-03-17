@@ -30,10 +30,7 @@ jobs:
 
       - name: Test coverage with Gradle
         run: >
-          ./gradlew testCoverage
-
-      - name: Print Errors
-        run: cat /home/runner/work/rest-api-shop/rest-api-shop/build/reports/tests/test/index.html
+          ./gradlew testCoverage --info
 
 #      - name: JaCoCo Report
 #        uses: Madrapps/jacoco-report@v1.2
