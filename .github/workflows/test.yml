@@ -30,7 +30,7 @@ jobs:
 
       - name: Test coverage with Gradle
         run: >
-          ./gradlew testCoverage --stacktrace
+          ./gradlew testCoverage --stacktrace --debug
 
       - name: JaCoCo Report
         uses: Madrapps/jacoco-report@v1.2
