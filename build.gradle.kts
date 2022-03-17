@@ -62,6 +62,7 @@ tasks.withType<KotlinCompile> {
 tasks {
     withType<Test> {
         useJUnitPlatform()
+        testLogging.showExceptions = true
     }
 
     task<Test>("unitTest") {
