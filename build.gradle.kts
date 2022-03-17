@@ -157,6 +157,8 @@ tasks.jacocoTestCoverageVerification {
 
             // excludes some classes or package
             excludes = listOf(
+                "com.jordi.shop.ApplicationKt",
+                "*.configuration.*",
                 "*.test.*",
                 "*.Kotlin*"
             )

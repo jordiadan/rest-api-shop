@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class AddProductController {
 
-    @PostMapping
+    @PostMapping("/products")
     fun addProduct() {
         println("TEST")
     }
