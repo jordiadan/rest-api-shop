@@ -30,4 +30,4 @@ jobs:
 
       - name: Test coverage with Gradle
         run: >
-          ./gradlew testCoverage -i
+          ./gradlew testCoverage --scan
