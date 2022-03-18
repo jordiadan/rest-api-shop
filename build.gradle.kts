@@ -63,11 +63,6 @@ tasks.withType<KotlinCompile> {
 tasks {
     withType<Test> {
         useJUnitPlatform()
-        //events "passed", "skipped", "failed" //, "standardOut", "standardError"
-//        testLogging{
-//            showExceptions = true
-//            events("passed", "skipped", "failed", "standardOut", "standardError")
-//        }
     }
 
     task<Test>("unitTest") {
