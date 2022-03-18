@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     id("com.google.cloud.tools.jib") version "2.4.0"
+    id("com.adarshr.test-logger") version "3.2.0"
     jacoco
 }
 
@@ -114,6 +115,17 @@ tasks.jacocoTestReport {
         csv.required.set(false)
     }
 
+    classDirectories.setFrom(
+        files(classDirectories.files.map {
+            fileTree(it) {
+                exclude(
+                    "**/configuration/**", "**/Application*"
+                )
+            }
+        })
+    )
+
+
     finalizedBy("jacocoTestCoverageVerification")
 }
 
@@ -157,6 +169,8 @@ tasks.jacocoTestCoverageVerification {
 
             // excludes some classes or package
             excludes = listOf(
+                "com.jordi.shop.ApplicationKt",
+                "*.configuration.*",
                 "*.test.*",
                 "*.Kotlin*"
             )
@@ -169,11 +183,11 @@ val testCoverage by tasks.registering {
     description = "Runs the unit tests with coverage"
 
     dependsOn(
-        ":test",
+        ":check",
         ":jacocoTestReport",
         ":jacocoTestCoverageVerification"
     )
 
-    tasks["jacocoTestReport"].mustRunAfter(tasks["test"])
+    tasks["jacocoTestReport"].mustRunAfter(tasks["check"])
     tasks["jacocoTestCoverageVerification"].mustRunAfter(tasks["jacocoTestReport"])
 }
