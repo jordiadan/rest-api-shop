@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     id("com.google.cloud.tools.jib") version "2.4.0"
+    id("com.adarshr.test-logger") version "3.2.0"
     jacoco
 }
 
@@ -63,8 +64,10 @@ tasks {
     withType<Test> {
         useJUnitPlatform()
         //events "passed", "skipped", "failed" //, "standardOut", "standardError"
-        testLogging.showExceptions = true
-        testLogging.events("passed", "skipped", "failed")
+//        testLogging{
+//            showExceptions = true
+//            events("passed", "skipped", "failed", "standardOut", "standardError")
+//        }
     }
 
     task<Test>("unitTest") {
